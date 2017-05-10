@@ -1,0 +1,20 @@
+-- Get list of cast and crew for a given Movie 
+-- IMDB Category :Movie - cast and Crew 
+-- Tables Linked : 1. Movie (Movies.Movies)
+--				   2. Cast and Crew (Events.CastCrew)
+--				   3. Brige Table (Events.MoviesCastCrew) 
+
+CREATE FUNCTION ProductsCostingMoreThan(@MovieName nvarchar(75))
+RETURNS TABLE
+AS
+RETURN
+
+select Movies.Name as MovieName, Events.CastCrew.Name as CastName from Movies.Movies
+join  Events.MoviesCastCrew
+on Events.MoviesCastCrew.EntityID = Movies.Movies.EntityID
+
+join Events.CastCrew on 
+
+Events.MoviesCastCrew.CastCrewID = Events.CastCrew.CastCrewID
+
+where Movies.Name = @MovieName
